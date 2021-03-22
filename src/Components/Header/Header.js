@@ -1,23 +1,58 @@
 import React from 'react';
-import logo from '../images/Urban Riders.png';
-import './Header.css'
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className='d-flex'>
-            <div className='logo'>
-                <img src={logo} alt=""/>
-            </div>
-            <div >
-                <ul className='d-flex mt-4 nav-bar'>
-                    <li>Home</li>
-                    <li>Destination</li>
-                    <li>Blog</li>
-                    <li>Contact</li>
-                    <li><button>LogIn</button></li>
-                </ul>
-            </div>
-        </div>
+       <nav class="navbar navbar-expand-lg navbar-light bg-light">
+           <div class="container-fluid">
+               <Link to="/">
+                   <div class="navbar-brand">
+                   <img src="/src/Components/images/Urban Riders.png" height="30" class="d-inline-block align-top" alt=""/>
+
+                   </div>
+               </Link>
+               <button 
+               class="navbar-toggler"
+               type="button"
+               data-bs-toggle="collapse"
+               data-bs-target="#navbarNavDropdown"
+               aria-controls="navbarNavDropdown"
+               aria-expanded="false"
+               aria-label="Toggle navigation"
+               >
+                   <span class="navbar-toggler-icon"></span>
+
+               </button>
+               <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                   <ul class="navbar-nav">
+                       <Link to="/">
+                           <li class="nav-item">
+                               <a href="#" class="nav-link active" aria-current="page">Home</a>
+                           </li>
+                       </Link>
+                       <Link to="/Destination">
+                           <li class="nav-item">
+                               <a href="#" class="nav-link">Destination</a>
+                           </li>
+                       </Link>
+                       <Link to="/Contact">
+                           <li class="nav-item">
+                               <a href="#" class="nav-link">Contact</a>
+                           </li>
+                       </Link>
+                       <Link to="/Login">
+                           <li class="nav-item">
+                               <a href="#" class="nav-link">Login</a>
+                           </li>
+                       </Link>
+
+                   </ul>
+
+               </div>
+
+           </div>
+
+       </nav>
     );
 };
 

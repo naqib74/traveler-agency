@@ -1,20 +1,39 @@
-
 import './App.css';
-import bg from './Components/images/Bg.png'
+
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
-import LogIn from './Components/LogIn/LogIn';
+
+import LogInManager from './Components/LogIn/LogInManager';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import { createContext, useState } from 'react';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+
+export const UserContext = createContext();
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <div>
-      <Header></Header>
-      <Home></Home>
-      <LogIn></LogIn>
-      <img src={bg} alt=""/>
-      
-     
-    </div>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+      <Router>
+        <Header></Header>
+        <Switch>
+          <Route exact path="/">
+            <Home></Home>
+          </Route>
+          <Route path="/login">
+            <LogInManager></LogInManager>
+            </Route>
+            <PrivateRoute>
+              
+            </PrivateRoute>
+        </Switch>
+      </Router>
+    </UserContext.Provider>
   );
 }
 

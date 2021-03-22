@@ -1,58 +1,70 @@
 import React from 'react';
 import './Home.css'
-import frame from '../../Components/images/Frame.png';
-import frame1 from '../../Components/images/Frame-1.png';
-import frame2 from '../../Components/images/Frame-2.png';
-import group from '../../Components/images/Group.png';
 
+import { Link } from 'react-router-dom';
+
+const services = [
+	{
+		name: 'Bike',
+		image: '/images/Frame-1.png',
+		url: '/rider/bike'
+	},
+	{
+		name: 'Bus',
+		image: '/images/Frame-2.png',
+		url: '/rider/bus'
+	},
+	{
+		name: 'Car',
+		image: '/images/Frame.png',
+		url: '/rider/car'
+	},
+	{
+		name: 'Train',
+		image: '/images/Group.png',
+		url: '/rider/train'
+	}
+];
 
 
 const Home = () => {
+    const handleBook =() =>{
+
+    }
     return (
-        <div>
-            <div class="row row-cols-1 row-cols-md-4 g-4">
-                <div class="col">
-                    <div class="card className='card-img'">
-                        <img  src={frame} class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Bike</h5>
+        <div
+        style={{
+            backgroundImage: "url('/images/Bg.png')",
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            height: '90vh'
+        }}
+    >
+        <div className="container py-5">
+            <div className="row">
+                {services.map((service) => {
+                    return (
+                        <div class="col-md-3 mb-4">
+                            <Link to={service.url}>
+                                <div class="card p-3">
+                                    <img
+                                        style={{ width: 'auto', height: '100px' }}
+                                        onClick={handleBook}
+                                        class="card-img-top mx-auto"
+                                        src={service.image}
+                                        alt=""
+                                    />
+                                    <div class="text-center py-4 px-2">
+                                        <h5 class="card-title mb-0"> {service.name} </h5>
+                                    </div>
+                                </div>
+                            </Link>
                         </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <img className='card-img' src={frame1} class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Car</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <img className='card-img' src={frame2} class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Bus</h5>
-                        </div>
-
-                    </div>
-
-
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <img className='card-img' src={group} class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Train</h5>
-                        </div>
-
-                    </div>
-
-
-                </div>
+                    );
+                })}
             </div>
-
-
         </div>
+    </div>
     );
 };
 

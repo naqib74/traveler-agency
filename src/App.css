@@ -1,10 +1,9 @@
 .App {
   text-align: center;
 }
-div{
-  background-image: url('Components/images/Bg.png');
-  background-repeat: no-repeat;
-  width: 100%;
+.login-area{
+  max-width:500px;
+  margin:auto
 }
 .App-logo {
   height: 40vmin;
